@@ -1,0 +1,28 @@
+/*.map__image{
+    width: 50%;
+    float: left;
+}*/
+
+.map > div path{
+    fill : #a4ced2;
+    stroke: #FFF;
+}
+
+.map > div path:hover{
+    fill : #1b1fe9;
+    stroke: #FFF;
+    transition: fill 0.3s;
+}
+
+#FR-A {
+    fill: #40e21f;
+}
+
+#FR-A:hover {
+    fill:#1c700b;
+    transition: fill 0.3s;
+}
+
+/*svg{
+    margin-left: 500px;
+}*/

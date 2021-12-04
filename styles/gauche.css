@@ -1,0 +1,99 @@
+@import url(meteo.css);
+
+#gauche {
+    width: 20%;
+
+    padding-left: 10px;
+}
+
+/* Blocs gauches */
+#gauche > aside > article {
+    background-color: lightgray;
+    height: 300px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 6px -6px black;
+}
+
+/* Titres de blocs */
+#gauche article div > p {
+    margin: 0;
+}
+
+#gauche article > div:first-of-type {
+    background-color: #0c3146;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24;
+    color: white;
+
+    box-shadow: 0 2px 6px 0 black;
+}
+
+#gauche article:nth-of-type(2) div:nth-of-type(2) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#gauche article button {
+    margin: 0;
+    border: none;
+    height: 50px;
+    width: 40%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    color: white;
+    font-size: 20px;
+    font-weight: 200;
+    box-shadow: 0 2px 6px 0 black;
+
+    overflow: hidden;
+}
+
+#gauche article button:hover {
+    filter: brightness(110%);
+    cursor: pointer;
+}
+
+#gauche article button:nth-of-type(even) {
+    background-color: rgba(145, 216, 145, 0.596);
+}
+
+#gauche article button:nth-of-type(odd) {
+    background-color: rgba(223, 209, 150, 0.74);
+}
+
+#gauche article button:nth-of-type(1) {
+    background-color: rgba(158, 217, 252, 0.781);
+}
+
+#gauche article button:nth-of-type(6) {
+    background-color: rgb(208, 171, 212);
+}
+
+@media screen and (max-width: 1200px) {
+    /* Corps principal */
+    #gauche {   
+        width: 100%;
+        padding-left: 0;
+    } 
+
+    #gauche aside {
+        width: 100%;
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    #gauche aside article {
+        width: 45%;
+    }
+} /* Media screen */

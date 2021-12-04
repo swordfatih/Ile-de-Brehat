@@ -1,0 +1,152 @@
+#video {
+    width: 100%;
+    position: relative;
+
+    height: 580px;
+    overflow: hidden;
+
+    /* margin-bottom: 10px; */
+}
+
+#video video {
+    width: 300%;
+    filter: blur(5px);
+}
+
+/* Texte */
+#video > p {
+    position: absolute;
+    top: 30%;
+
+    width: 100%;
+    text-align: center;
+
+    color: white;
+    font-size: 72px;
+    font-weight: bold;
+
+    background-image: linear-gradient(45deg,
+        #039eb9 15%, 
+        #377ac7 15%, 
+        #43abf1 30%, 
+        #439df1 30%, 
+        #f14343 50%, 
+        #fca739 50%, 
+        #737fee 80%, 
+        #476098 50%, 
+        #476098 100%, 
+        #A7489B 120%);
+    background-size: 100%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+}
+
+#video > p:hover {
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+@keyframes rainbow-text-simple-animation-rev {
+    0% { background-size: 650%; }
+    40% { background-size: 650%; }
+    100% { background-size: 30%; }
+}
+
+@keyframes rainbow-text-simple-animation {
+    0% {  background-size: 30%; }
+    80% { background-size: 650%; }
+    100% { background-size: 650%; }
+}
+  
+/* Réservation */
+#video > div {
+    background-color: rgb(0, 0, 0, 0.5);
+
+    width: 100%;
+    height: 110px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    align-items: center;
+
+    letter-spacing: 2px;
+
+    position: absolute;
+    top: calc(100% - 110px);
+
+    text-align: center;
+
+    /* box-shadow: inset -2px -12px 30px -12px #039eb9; */
+}
+
+@media screen and (max-width: 1200px) {
+    #video > div {   
+        flex-direction: column;
+    }
+}
+
+/* Formulaire */ 
+#video > div > form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+}
+
+#video > div > p {
+    color: rgb(200, 200, 200);
+    font-size: 32px;
+}
+
+#video > div > form > div {
+    color: rgb(200, 200, 200);
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: space-between;
+    width: 20%;
+}
+
+#video > div > form > div > input {
+    height: 30px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    
+    padding-left: 3px;
+
+    border-radius: 2px;
+    border: none;
+    cursor: text;
+
+    background-color: #039eb98e;
+    color: rgba(245, 245, 245, 0.644);
+}
+
+#video input[type=submit] {
+    color: rgba(245, 245, 245, 0.644);
+    font-size: 24px;
+    cursor: pointer;
+    height: 80px;
+}
+
+#video input:hover[type=submit] {
+    background-color: #039eb9;
+}
+
+#video input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

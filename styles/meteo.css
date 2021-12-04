@@ -1,0 +1,15 @@
+#meteo {
+    text-align: center;
+    font-size: 16px;
+}
+
+#iconc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#iconc img {
+    width: 100px;
+    height: auto;
+}

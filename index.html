@@ -1,0 +1,377 @@
+<head>
+	<title>Commune d'île-de-Bréhat, site offciel - ILE-DE-BREHAT </title>
+	<link rel="icon" type="image/png" sizes="192x192" href="./assets/icon.png"/> 
+	<meta charset="UTF-8">
+
+	<!-- Main style -->
+	<link href="styles/style.css" rel="stylesheet">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<script>
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+				let header = document.getElementsByTagName("header")[0];
+				header.style.backgroundColor = "white";
+
+				for(let a of header.getElementsByTagName('a')) {
+					a.style.webkitTextStroke = '0px transparent';
+				}
+
+				document.getElementsByTagName("img")[0].src = "assets/logo.png";
+			} else {
+				let header = document.getElementsByTagName("header")[0];
+				header.style.backgroundColor = "transparent";
+
+				for(let a of header.getElementsByTagName('a')) {
+					a.style.webkitTextStroke = '0.2px black';
+				}
+
+				document.getElementsByTagName("img")[0].src = "assets/logo_black.png";
+			}
+		} 
+
+		$(document).ready(function() {   
+			weather(48.84014, -3.01322);
+
+			function error() {
+			console.log("Une erreur !!");
+			}
+		
+			function weather(lat, long) {
+			var URL = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${long}`;
+			$.getJSON(URL, function(data) {
+				display(data);
+			});
+			}
+		
+			function display(data) {
+				var city = data.name.toUpperCase();
+				var temp =
+					Math.round(data.main.temp_max) +
+					"&deg; C | " +
+					Math.round(Math.round(data.main.temp_max) * 1.8 + 32) +
+					"&deg; F";
+				var desc = data.weather[0].description;
+				var date = new Date();
+			
+				var months = [
+					"Janvier",
+					"Fevrier",
+					"Mars",
+					"Avril",
+					"Mai",
+					"Juin",
+					"Juillet",
+					"Août",
+					"Septembre",
+					"Octobre",
+					"Novembre",
+					"Décembre"
+				];
+			
+				var weekday = new Array(7);
+				weekday[0] = "Dimanche";
+				weekday[1] = "Lundi";
+				weekday[2] = "Mardi";
+				weekday[3] = "Mercredi";
+				weekday[4] = "Jeudi";
+				weekday[5] = "Vendredi";
+				weekday[6] = "Samedi";
+			
+				var font_color;
+				var bg_color;
+					if (Math.round(data.main.temp_max) > 25) {
+						font_color = "#d36326";
+						bg_color = "#f3f5d2";
+					} else {
+						font_color = "#44c3de";
+						bg_color = "#eff3f9";
+					}
+			
+				$('#icon').attr("src",data.weather[0].icon);
+
+				var minutes =
+					date.getMinutes() < 11 ? "0" + date.getMinutes() : date.getMinutes();
+				var date =
+					weekday[date.getDay()] +
+					" - " +
+					months[date.getMonth()] +
+					" " +
+					date.getDate() +
+					" - " +
+					date.getHours() +
+					":" +
+					minutes;
+				$(".location").html(city);
+				$(".temp").html(temp);
+				$(".date").html(date);
+				$(".box").css("background", bg_color);
+				$(".location").css("color", font_color);
+				$(".temp").css("color", font_color);
+			}
+		});
+	</script>
+
+	<!-- Ressources externes -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<header>
+		<div> <!-- Logo -->
+			<div>
+				<img src="./assets/logo_black.png"/>
+			</div>
+		</div>
+		
+		<nav> <!--Menu du haut -->
+			<ul>
+				<li><a id="accueil.html">ACCUEIL</a></li>
+				<li><a id="municipalite.html">MUNICIPALITÉ</a></li>
+				<li><a id="service.html">SERVICES MUNICIPAUX</a></li>
+				<li><a id="activite.html">ACTIVITÉS</a></li>
+				<li><a id="decouvertes.html">DECOUVERTES</a></li>
+				<li><a id="contact.html">CONTACT</a></li>
+			</ul>
+		</nav>
+	</header>
+		
+	<div id="video">
+		<video playsinline autoplay muted loop>
+			<source src="./assets/teaser.mp4" type="video/mp4">
+			<source src="https://www.youtube.com/embed/m_0gLSMMAws" type="video/mp4">
+			Pas trouvé.
+		</video>
+
+		<p>Visitez Bréhat.</p>
+
+		<div>
+			<p>Réserver un séjour</p>
+			<form>
+				<div><label>Départ</label> <input type="date"/></div>
+				<div><label>Retour</label> <input type="date"/></div>
+				<div><label>Adultes</label> <input type="number" value='1' /></div>
+				<div><input type="submit" value="Rechercher" /></div>
+			</form>
+		</div>
+	</div>
+
+	<main>
+		<section id="banniere"> <!-- Bannière -->
+			<h1>Bréhat Infos</h1>
+		</section>
+
+		<section id="gauche"> <!-- Barre latéral gauche -->
+			<aside>
+				<article>  <!-- Carte -->
+					<div><p>Carte</p></div>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21003.397538342557!2d-3.025809908912054!3d48.85011146412656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48120ffd48454b05%3A0x40ca5cd36e639e0!2zw45sZS1kZS1CcsOpaGF0!5e0!3m2!1sfr!2sfr!4v1634030050785!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				</article>
+
+				<article>  <!-- Liens pratiques -->
+					<div><p>Liens</p></div>
+					<div>
+						<button>Vie quotidienne</button>
+						<button>Nous contacter</button>
+						<button>Vos démarches</button>
+						<button>Numéros utiles</button>
+						<button>L'agenda</button>
+						<button>L'actualité</button>
+					</div>
+				</article>
+
+				<article id="meteo">  <!-- Meteo -->
+					<div><p>Météo</p></div>
+					<div>
+						<div id="iconc"><img src="" id="icon"/></div>
+						<div><h2 class="location">Ville</h2></div>
+						<div><p class="date">Date</p></div>
+						<div><h1 class="temp">X &deg;C | Y &deg;F</h1></div>
+					</div>
+				</article>
+			</aside>	
+		</section>
+
+		<section id="milieu"> <!-- Corps principal -->
+			<div>
+				<p>A la une</p>
+			</div>
+			<div> <!-- Bulletins municipales -->
+				<article> 
+					<img src="assets/articles/festival.jpg"/>
+					<div>
+						<h1>Festival Les Scènes de Bréhat</h1>
+						<p>Ravie d’avoir permis la réalisation du premier festival Les Scènes de Bréhat, 
+							la mairie de Bréhat félicite l’organisation et les artistes pour la bonne tenue et la qualité du festival. 
+							Merci également aux nombreux bénévoles bréhatins qui ont contribué à ce franc succès. 
+							Nul doute que Les Scènes de Bréhat ont fait une entrée fracassante dans le paysage culturel local.
+							A l’année prochaine pour la deuxième édition !</p>
+					</div>
+				</article>
+			
+				<article>
+					<img src="assets/articles/ainés.jpg"/>
+					<div>
+						<h1>Repas des ainés - dimanche 7 novembre 2021</h1>
+						<p>Ce sont 55 joyeux drilles qui se sont retrouvés au restaurant du Crech Kério, dimanche, en compagnie des membres du conseil municipal pour le repas annuel offert par la commune. 
+							« C’est l’un des meilleurs événements de l’année pour la commune », a souligné le maire, Patrick Huet, dans ses quelques mots de bienvenue.<br><br>
+					</div>
+				</article>
+			
+				<article>
+					<img src="assets/articles/biodechets.jpg"/>
+					<div>
+						<h1>Enquête : que deviennent vos biodéchets</h1>
+						<p>Nos déchets de cuisine sont aujourd’hui en grande partie collectés parmi les ordures ménagères et expédiés sur le continent pour y être incinérés : 
+							ils participent au coût très élevé de la gestion des déchets payé par chacun des contribuables. Nos déchets de jardins, non pris en charge par la commune, sont fréquemment brûlés ou mal valorisés. Pourtant, toutes ces matières organiques pourraient retourner à la terre pour la fertiliser.
+					</div>
+				</article>
+
+				<article>
+					<img src="assets/articles/composteurs.jpg"/>
+					<div>
+						<h1>Distribution des composteurs – vacances de la Toussaint</h1>
+						<p>vous pouvez retirer votre composteur aux services techniques de la mairie lors des permanences suivantes, de 10h à 12h :
+
+							<br>lundi 25 octobre
+							<br>samedi 30 octobre
+							<br>mercredi 3 novembre
+						</p>
+					</div>
+				</article>
+			</div> 
+		</section>
+
+		<section id="droite">
+			<aside> <!-- Barre latéral droite -->
+				<div>  <!-- Covid-19 -->
+					<div><p>Covid-19</p></div>
+					<article> 
+						<date><small>06/09</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>Point sur la situation sanitaire sur l’Île de Bréhat</p>
+					</article>
+
+					<article> 
+						<date><small>26/08</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>Port du masque obligatoire par arrêté préfectoral du 25 août 2021</p>
+					</article>
+
+					<article> 
+						<date><small>14/04</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>Communiqué de la cellule Covid du 10 avril 2021</p>
+					</article>
+					
+					<article> 
+						<date><small>10/04</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>Confinement – avril 2021</p>
+					</article>
+				</div>
+				
+				<div>  <!-- Actualités municipales -->
+					<div><p>Actualités municipales</p></div>
+					<article> 
+						<date><small>27/09</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>Demandes de logements communaux et sociaux</p>
+					</article>
+
+					<article> 
+						<date><small>23/09</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>Extension salle polyvalente</p>
+					</article>
+					
+					<article> 
+						<date><small>16/09</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>Coupure de courant – vendredi 24 septembre</p>
+					</article>
+
+					<article>
+						<date><small>10/09</small><br>2021</date>
+						<button>+<br>d'infos</button>
+						<p>19 août 2021 : Comité des usagers permanents des ports de Bréhat</p>
+					</article>
+				</div>
+			</aside>
+		</section>
+	</main>
+	
+	<footer>  <!-- Pied de page -->
+		<section id="svg">
+			<div id="réseaux">
+				<div>
+					<p>Site officiel de la commune d’Île-de-Bréhat</p>
+					<span>
+						Toute l’information pratique sur l’administration de la commune, 
+						les démarches administratives, les services, la vie quotidienne insulaire, les loisirs et le tourisme.
+					</span>
+				</div>
+
+				<div>
+					<p>Retrouvez nous sur les réseaux sociaux</p>
+				</div>
+				
+				<div>
+					<a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2FMairie-de-lile-de-Br%25C3%25A9hat-109476447520454%2F"><img src="assets/facebook.png"/></a>
+					<a href="https://www.youtube.com/channel/UCKjtJqq0QdIYhCIgUOmA36Q"><img src="assets/youtube.png"/></a>
+				</div>
+			</div>
+
+			<!-- Created with Inkscape (http://www.inkscape.org/) -->
+			<div class="map" id="map">
+				<div>
+					<p>L'île et ses alentours</p>
+				</div>
+
+				<div>
+					<div>
+						<svg width="200px" height="280px" version="1.1" viewBox="0 0 10.801 7.9049" xmlns="http://www.w3.org/2000/svg">
+							<g transform="translate(32.173 -214.16)">
+								<g transform="translate(-50.913 174.95)" fill="none" stroke="#646464" stroke-width=".13229">
+									<a xlink:href="https://fr.wikipedia.org/wiki/%C3%8Ele-de-Br%C3%A9hat" xlink:title="Ile-De-Bréhat"><path id="FR-A" title="Ile-De-Bréhat"class="border" d="m27.929 40.091 0.80962-0.27252 0.06879-0.18521 0.6641-0.14023-0.01587 0.41275-0.42069 0.38894-0.83873 0.08467-0.26723-0.2884-0.03969 0.61912 0.48948-0.10319 0.49477 0.71702-0.10054 0.40217-0.6059-0.17462 0.05821-0.51858-0.33602-0.32279"/></a>
+									<a xlink:href="https://fr.wikipedia.org/wiki/Lanmodez" xlink:title="Lanmodez"><path id="FR-B" title="Lanmodez" class="border" d="m23.339 39.953 0.58738 0.95515-0.52388 1.0134-0.38629 0.43392-0.10848 0.03704-0.09261-0.03969-0.55033-0.82815 0.07144-0.94456 0.6006-0.19579 0.40217-0.43127"/></a>
+									<a xlink:href="https://fr.wikipedia.org/wiki/Lézardrieux" xlink:title="Lézardrieux"><path id="FR-C" title="Lézardrieux" class="border" d="m22.907 42.392 0.10848-0.03704 0.42862-0.15081 0.51329 0.06879-0.04498 0.80698-0.23019 0.83344-0.60325 0.64294-0.09525 1.6484-0.889 0.82021-0.32544-0.26194-0.05292-0.46038-0.44186-0.14552-0.40481 0.15081 0.18256-0.2884-0.02117-0.68527-0.26194-0.19844 0.16933-0.42333 0.9816-0.36248-0.03969-0.39158 0.4445 0.01588 0.12171-0.6059 0.48683-0.64029-0.02646-0.33602"/></a>
+									<a xlink:href="https://fr.wikipedia.org/wiki/Pleubian" xlink:title="Pleubian"><path id="FR-D" title="Pleubian" class="border" d="m18.804 41.392 0.17198-0.635 0.31221-0.34396 0.36777 0.17462 0.71967-0.21431 0.23019-0.30956 0.53446-0.10583 0.15081-0.44715 0.35719 0.0344 0.67998-0.26194 0.1561 0.13494 1.2726-0.10319 0.26458 0.49742-0.68262 0.14023-0.40217 0.43127-0.6006 0.19579-0.07144 0.94456 0.55033 0.82815-0.98425 0.28046-0.52917 0.32808-2.2225 0.68792 0.15875-0.73554-0.29633-0.52123 0.0926-0.27252-0.23019-0.7276"/></a>
+									<a xlink:href="https://fr.wikipedia.org/wiki/Ploubazlanec" xlink:title="Ploubazlanec"><path id="FR-E" title="Ploubazlanec" class="border" d="m26.085 45.972-0.51858 0.18785-0.79375-0.33867-0.16669-0.89958-0.27781-0.48948-0.50535-0.32808 0.65352-0.8255 0.46567-0.19315 0.73025 0.5715 0.74083-0.32279 1.4499-0.21696 0.35454 0.28575-0.50535 0.57679 0.4789 0.62706 0.07673 0.36248-0.7276 0.14817-0.2831 0.55827-0.39688 0.0026-0.77523 0.29369"/>
+									</a>
+								</g>
+							</g>
+						</svg>
+									
+						<span id="point-brehat"><a href="https://fr.wikipedia.org/wiki/%C3%8Ele-de-Br%C3%A9hat">Ile-de-Brehat<br>•</a></span>
+						<span id="point-pleubian"><a href="https://fr.wikipedia.org/wiki/Pleubian">Pleubian<br>•</a></span>
+						<span id="point-lanmodez"><a href="https://fr.wikipedia.org/wiki/Lanmodez">Lanmodez<br>•</a></span>
+						<span id="point-lézardrieux"><a href="https://fr.wikipedia.org/wiki/Lézardrieux">Lézardrieux<br>•</a></span>
+						<span id="point-ploubazlanec"><a href="https://fr.wikipedia.org/wiki/Ploubazlanec">Ploubazlanec<br>•</a></span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="liens">
+			<a href="#">Mention légales et CGU</a>
+			<p>•</p>
+			<a href="#">Plan du site</a>
+		</section>
+
+		<section id="partenaires">
+			<div>
+				<img src="assets/iut.jpg"/>
+				<img src="assets/cotesdarmordep.jpg"/>
+				<img src="assets/bretagne.png"/>
+			</div>
+			
+			<p>Dans le cadre du projet de PJS3 à l'IUT de Paris.</p>
+		</section>
+	</footer>
+</body>
+	

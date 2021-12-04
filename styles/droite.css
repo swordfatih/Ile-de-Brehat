@@ -1,0 +1,103 @@
+#droite {
+    width: 20%;
+}
+
+/* Barre latérale droite */
+#droite > aside {
+    margin-left: 10px;
+}
+
+/* Fond titre */
+#droite > aside > div > div {
+    background-color: #0c3146;
+    font-size: 20px;
+    color: white;
+
+    text-align: center;
+
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+
+/* Articles */
+#droite article {
+    box-shadow: 0 8px 6px -6px black;
+    
+    background-color: rgba(247, 247, 247, 0.575);
+
+    width: 100%;
+    height: 100px;
+}
+
+/* Dates */
+#droite article > date {
+    font-size: 24px;
+    font-weight: bold;
+    
+    color: gray;
+
+    height: calc(100% - 15x);
+    margin: 10px 10px 10px 5px;
+    float: left;
+}
+
+#droite article > date > small {
+    background-color: rgb(216, 133, 133);
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    padding: 4px;
+}
+
+/* Bouton informations */
+#droite button {
+    float: right;
+    height: 100%;
+    background-color: lightcoral;
+    color: white;
+    border: none;
+    font-size: 16px;
+    opacity: 0;
+    width: 0px;
+    overflow: hidden;
+    transition: width 2s, opacity 2s;
+}
+
+#droite article:hover > button {
+    width: 80px;
+    opacity: 1; 
+}
+
+#droite button:hover {
+    background-color: rgb(253, 83, 83);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+    /* Corps principal */
+    #droite {   
+        width: 100%;
+        font-size: 0;
+    } 
+
+    #droite aside {
+        margin-left: 0px;
+        display: inline-block;
+
+        width: 100%;
+    }
+
+    #droite aside > div {
+        display: inline-block;
+        width: 50%;
+
+        margin: 0;
+
+        vertical-align: top;
+    }
+
+    #droite article {
+        font-size: 16px;
+    }
+} /* Media screen */

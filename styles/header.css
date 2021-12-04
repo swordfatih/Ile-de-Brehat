@@ -1,0 +1,121 @@
+/* Bannière */
+header {
+    background-color: transparent;
+    font-size: 0;
+
+    box-shadow: 0 8px 6px -6px black;
+
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+}
+
+/* Logo */
+header > div {
+    width: 20%;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+
+    padding-left: 10px;
+}
+
+header img {
+    width: 100%;
+}
+
+/* Menu */
+nav {
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    width: 100%;
+
+    display: table;
+    table-layout: fixed; 
+}
+
+li {
+    display: table-cell;
+    width: 20%;
+    height: 80px;
+    line-height: 80px;
+}
+
+li a {
+    display: block;
+    color: gray;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+
+    transition: 0.5s background-color;
+    transition: 0.5s color;
+
+    -webkit-text-stroke: 0.2px black;
+}
+
+li a:hover {
+    background-color: #039eb9af;
+    color: white;
+    cursor: pointer;
+    -webkit-text-stroke: 0px transparent;
+}
+    
+@media screen and (max-width: 1350px) {
+    /* Header */
+    header {
+        max-height: 50px;
+        overflow: hidden;
+        transition: max-height 2s;
+        width: 100%;
+    }
+
+    header:hover {
+        max-height: 200px;
+    }
+
+    /* Logo */
+    header > div {
+        width: 100%;
+        padding: 0px;
+
+        height: 50px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    header > div > div {
+        margin: auto;
+        width: 300px;
+    }
+
+    /* Menu */
+    nav {
+        width: 100%;
+    }
+    
+    ul {
+        display: inline-block;
+    }
+    
+    li {
+        width: 100%;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+    }
+    
+}
